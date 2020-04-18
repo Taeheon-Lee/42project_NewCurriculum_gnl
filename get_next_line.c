@@ -6,7 +6,7 @@
 /*   By: tlee <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 02:36:59 by tlee              #+#    #+#             */
-/*   Updated: 2020/04/17 22:25:43 by tlee             ###   ########.fr       */
+/*   Updated: 2020/04/17 23:00:39 by tlee             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ int		get_next_line(const int fd, char **line)
 
 	i = 0;
 	if (!wh)
-		wh = (char **)malloc(sizeof(char *) * 590432);
-	if (fd < 0 || !line || (cnt = warehouse(fd, &(wh[fd]))) < 0)
+		wh = (char **)malloc(sizeof(char *) * 1);
+	if (fd < 0 || !line || (cnt = warehouse(fd, &(wh[0]))) < 0)
 		return (-1);
-	while (wh[fd][i] != '\0' && wh[fd][i] != '\n')
+	while (wh[0][i] != '\0' && wh[0][i] != '\n')
 		i++;
 	*line = ft_strnew(i);
-	*line = ft_strncpy(*line, wh[fd], i);
-	if (*(wh[fd]) || (**line && *line))
+	*line = ft_strncpy(*line, wh[0], i);
+	if (*(wh[0]) || (**line && *line))
 	{
-		wh[fd] = ft_strcut(wh[fd], '\n');
+		wh[fd] = ft_strcut(wh[0], '\n');
 		return (1);
 	}
 	return (cnt);
